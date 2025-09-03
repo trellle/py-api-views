@@ -23,15 +23,15 @@ from cinema.serializers import (
 
 class GenreList(APIView):
     def get(self, request):
-       genre = Genre.objects.all()
-       serializer = GenreSerializer(genre, many=True)
-       return Response(serializer.data, status=status.HTTP_200_OK)
-    
+        genre = Genre.objects.all()
+        serializer = GenreSerializer(genre, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def post(self, request):
-       serializer = GenreSerializer(data=request.data)
-       serializer.is_valid(raise_exception=True)
-       serializer.save()
-       return Response(serializer.data, status=status.HTTP_201_CREATED)
+        serializer = GenreSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class GenreDetail(APIView):
